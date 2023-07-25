@@ -1,10 +1,7 @@
 public class Planete {
     String nom;
     int diametre;
-    String matiere;
-    int totalVisiteurs;
     Atmosphere atmosphere;
-    Vaisseau vaisseauAccoste;
     static String forme="Sphérique";
     static int nbPlanetesDecouvertes;
 
@@ -21,18 +18,6 @@ public class Planete {
     int rotation(int degres){
         System.out.println("Je suis la planète "+nom+" et je tourne sur moi-même de "+degres+" degrés.");
         return degres/360;
-    }
-
-    Vaisseau accueillirVaisseau(Vaisseau nouveauVaisseau){
-
-        totalVisiteurs+=nouveauVaisseau.nbPassagers;
-
-        Vaisseau vaisseauPrecedent=vaisseauAccoste;
-
-        vaisseauAccoste=nouveauVaisseau;
-
-        return vaisseauPrecedent;
-
     }
 
     static String expansion (double milliardsDAnneesLumiere){
