@@ -1,6 +1,9 @@
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-
+        Scanner sc = new Scanner(System.in);
         PlaneteTellurique mercure = new PlaneteTellurique("Mercure");
         mercure.diametre = 4880;
         PlaneteTellurique venus = new PlaneteTellurique("Venus");
@@ -15,43 +18,71 @@ public class Main {
         saturne.diametre = 120536;
         PlaneteGazeuse uranus = new PlaneteGazeuse("Uranus");
         uranus.diametre = 51118;
+        Atmosphere atmosphereUranus=new Atmosphere();
+        atmosphereUranus.tauxHydrogene = new Float(83);
+        atmosphereUranus.tauxHelium = new Float(15);
+        atmosphereUranus.tauxMethane=new Float(2.5);
+        atmosphereUranus.tauxAzote = new Float(0);
+        uranus.atmosphere=atmosphereUranus;
+        System.out.println("Le taux d'azote d'uranus est de "+uranus.atmosphere.tauxAzote+"%");
         PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
 
-        Vaisseau chasseur=new VaisseauDeGuerre("CHASSEUR");
-        chasseur.blindage=156;
-        chasseur.resistanceDuBouclier=2;
+        Vaisseau chasseur = new VaisseauDeGuerre("CHASSEUR");
+        Vaisseau fregate = new VaisseauDeGuerre("FREGATE");
+        fregate.nbPassagers = 24;
+        Vaisseau croiseur = new VaisseauDeGuerre("CROISEUR");
+        Vaisseau cargo = new VaisseauCivil("CARGO");
+        Vaisseau vaisseauMonde = new VaisseauCivil("VAISSEAU-MONDE");
 
-        Vaisseau vaisseauMonde=new VaisseauCivil("VAISSEAU-MONDE");
-        vaisseauMonde.blindage=4784;
-        vaisseauMonde.resistanceDuBouclier=30;
+//        System.out.println("Quel vaisseau voulez-vous manipuler ?");
+//        String vaisseauChoisie = sc.nextLine();
+//        System.out.println("Sur quelle planete téllurite voulez-vous vous poser ? (Mercure, Venus, Terre, Mars)");
+//        String planete = sc.nextLine();
+//        System.out.println("Quelle tonage voulez-vous embarquer ?");
+//        int tonnage = sc.nextInt();
+//
+//        Vaisseau vaisseau = null;
+//        switch (vaisseauChoisie) {
+//            case "CHASSEUR":
+//                vaisseau = chasseur;
+//                break;
+//            case "FREGATE":
+//                vaisseau = fregate;
+//                break;
+//            case "CROISEUR":
+//                vaisseau = croiseur;
+//                break;
+//            case "CARGO":
+//                vaisseau = cargo;
+//                break;
+//            case "VAISSEAU-MONDE":
+//                vaisseau = vaisseauMonde;
+//                break;
+//        }
+//
+//        PlaneteTellurique planeteSelectionner = null;
+//        switch (planete) {
+//            case "Mercure":
+//                planeteSelectionner = mercure;
+//                break;
+//            case "Terre":
+//                planeteSelectionner = terre;
+//                break;
+//            case "Venus":
+//                planeteSelectionner = venus;
+//                break;
+//            case "Mars":
+//                planeteSelectionner = mars;
+//                break;
+//        }
+//
+//        planeteSelectionner.accueillirVaisseau(vaisseau);
+//        int rejet = vaisseau.emporterCargaison(tonnage);
+//        System.out.println("Tonnage rejeté est de "+rejet);
 
-        vaisseauMonde.activerBouclier();
-        chasseur.activerBouclier();
-        ((VaisseauDeGuerre)chasseur).attaque(vaisseauMonde, "laser photonique", 3);
-        vaisseauMonde.desactiverBouclier();
 
-        System.out.println("Le Vaisseau-Monde dispose encore de "+vaisseauMonde.resistanceDuBouclier+" minutes de protection grâce à son bouclier.");
-        System.out.println("Le Vaisseau-Monde dispose encore d'un blindage de valeur "+vaisseauMonde.blindage+".");
 
-        mars.accueillirVaisseau(vaisseauMonde);
-        mars.accueillirVaisseau(chasseur);
-        Vaisseau chasseurSurTerre = new VaisseauDeGuerre("CHASSEUR");
-        terre.accueillirVaisseau(chasseurSurTerre);
-        System.out.println("Le chasseur à rejeté "+chasseurSurTerre.emporterCargaison(20)+" tonnes");
-        Vaisseau fregateSurTerre = new VaisseauDeGuerre("FREGATE");
-        fregateSurTerre.nbPassagers = 100;
-        terre.accueillirVaisseau(fregateSurTerre);
-        System.out.println("La frégate à rejeté "+fregateSurTerre.emporterCargaison(45)+" tonnes");
-        System.out.println("La frégate à rejeté "+fregateSurTerre.emporterCargaison(12)+" tonnes");
-        Vaisseau fregateSurTerre2 = new VaisseauDeGuerre("FREGATE");
-        fregateSurTerre.nbPassagers = 14;
-        terre.accueillirVaisseau(fregateSurTerre2);
-        System.out.println("La frégate à rejeté "+fregateSurTerre2.emporterCargaison(30)+" tonnes");
-        Vaisseau vaisseauMondeSurTerre = new VaisseauCivil("VAISSEAU-MONDE");
-        terre.accueillirVaisseau(vaisseauMondeSurTerre);
-        System.out.println("Le vaisseau monde à rejeté "+vaisseauMondeSurTerre.emporterCargaison(1560)+" tonnes");
-        System.out.println("Le vaisseau monde à rejeté "+vaisseauMondeSurTerre.emporterCargaison(600)+" tonnes");
 
     }
 }

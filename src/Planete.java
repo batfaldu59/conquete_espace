@@ -1,4 +1,4 @@
-public abstract class Planete {
+public class Planete {
     String nom;
     int diametre;
     Atmosphere atmosphere;
